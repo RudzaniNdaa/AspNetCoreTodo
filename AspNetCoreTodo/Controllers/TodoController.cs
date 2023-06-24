@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreTodo.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -11,11 +12,11 @@ namespace AspNetCoreTodo.Controllers
     [Route("[controller]")]
     public class TodoController : Controller
     {
-        private readonly ILogger<TodoController> _logger;
+        private readonly ITodoItemService _todoItemService;
 
-        public TodoController(ILogger<TodoController> logger)
+        public TodoController(ITodoItemService todoItemService)
         {
-            _logger = logger;
+            _todoItemService = todoItemService;
         }
 
         public IActionResult Index()
