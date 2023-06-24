@@ -19,9 +19,13 @@ namespace AspNetCoreTodo.Controllers
             _todoItemService = todoItemService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var items = await _todoItemService.GetIncompleteItemsAsync();
+
+            // Put items into a model
+
+            // Pass the view to a model and render
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
